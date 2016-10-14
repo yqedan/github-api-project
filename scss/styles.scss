@@ -1,7 +1,7 @@
 $blue : #6666ff;
 $green : #00e64d;
 body{
-  background-image: url(https://s3.amazonaws.com/f.cl.ly/items/3a2h193d3W3O0L3g2U43/octocat_darkwood.jpg);
+  background-image: url(../../img/octocat_darkwood.jpg);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -9,6 +9,10 @@ body{
   .well{
     background-color: rgba( $green, .7 )
   }
+}
+
+td{
+  font-weight: bold;
 }
 #title-well{
   margin-top: 20px;
