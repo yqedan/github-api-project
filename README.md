@@ -6,7 +6,7 @@
 
 ## Description
 
-_coming soon!_
+_This page is uses github API to look up a list of repositories by username_
 
 ## Setup/Installation Requirements
 #### Run the following commands to set up this project:

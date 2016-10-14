@@ -1,12 +1,12 @@
 var GithubLookup = require('./../js/github-user-lookup.js').githubLookupModule;
 
-function displayRepos(repos, page){
+function displayRepos(repos, page, username){
   $("#data").text("");
   var repoList = "";
   for (var i = 0; i < repos.length; i++) {
     repoList += "<tr>";
     repoList += "<td>" + ((page-1)*30 + (i+1)) + "</td>";
-    repoList += "<td>" + repos[i].name + "</td>";
+    repoList += "<td><a href='https://github.com/" + username + "/" + repos[i].name + "'>" + repos[i].name + "</a></td>";
     if (repos[i].description === null) {
       repoList += "<td>No Description </td>";
     }else{
@@ -32,7 +32,7 @@ function displayPageList(user){
   $("#page-buttons").text("");
   $("#data").hide();
   $("#page-buttons").append("<h3>User: " + user.login + "</h3>");
-  $("#page-buttons").append("<img class='small' src=" + user.avatar_url + "><br>");
+  $("#page-buttons").append("<img class='small' src=" + user.avatar_url + ">");
   $("#page-buttons").append("<h4>Click to see their repositories</h4>");
   var pageCount = Math.ceil(user.public_repos/30);
   for (var i = 1; i <= pageCount; i++) {
@@ -46,7 +46,7 @@ function displayPageList(user){
   $(".view-page").click(function() {
     $("#data").show();
     var page = $(this).attr('id')[10];
-    displayRepos(githublookup.pages[page-1], page);
+    displayRepos(githublookup.pages[page-1], page, user.login);
   });
   $("#page-buttons").show();
 }
