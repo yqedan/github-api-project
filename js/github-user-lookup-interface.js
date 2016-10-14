@@ -12,7 +12,13 @@ function displayRepos(repos, page, username){
     }else{
       repoList += "<td>" + repos[i].description + "</td>";
     }
-    repoList += "<td>" + moment(repos[i].created_at).format("LL") + "</td>"
+    repoList += "<td>" + moment(repos[i].created_at).format("LL") + "</td>";
+
+    if (repos[i].language === null) {
+      repoList += "<td>No Data</td>";
+    }else{
+      repoList += "<td>" + repos[i].language + "</td>";
+    }
     repoList += "</tr>";
   }
   $("#data").append("<table class='table'>"+
@@ -21,6 +27,7 @@ function displayRepos(repos, page, username){
                         "<th>Ropository Name</th>" +
                         "<th>Description</th>" +
                         "<th>Date created</th>" +
+                        "<th>Primary Language Used</th>" +
                       "</tr>" +
                       repoList +
                     "</table>");

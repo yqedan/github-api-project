@@ -14,7 +14,6 @@ GithubLookup.prototype.getAllRepos = function(displayPageList, notFound, usernam
 
 GithubLookup.prototype.getPageOfRepos = function(notFound, username, cacheRepos, page){
   $.get('https://api.github.com/users/' + username + '/repos?page=' + page + '&access_token=' + apiKey).then(function(response){
-    console.log(response);
     cacheRepos(response, page);
   }).fail(function(error){
     notFound(error.responseJSON.message);
