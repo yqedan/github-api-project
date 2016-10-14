@@ -1,0 +1,42 @@
+{
+  "name": "github-user-lookup",
+  "version": "1.0.0",
+  "description": "github user lookup using github api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yusuf Qedan",
+  "license": "ISC",
+  "devDependencies": {
+    "bower-files": "^3.14.1",
+    "browser-sync": "^2.17.2",
+    "browserify": "^13.1.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.7.3",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.9.3",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "gulp-jshint": "^2.0.1",
+    "uglify-js": "^2.7.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yqedan/github-api-project.git"
+  },
+  "keywords": [
+    "js",
+    "dummy"
+  ],
+  "bugs": {
+    "url": "https://github.com/yqedan/github-api-project/issues"
+  },
+  "homepage": "https://github.com/yqedan/github-api-project#readme"
+}
