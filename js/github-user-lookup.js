@@ -4,11 +4,11 @@ GithubLookup = function(){
 
 }
 
-GithubLookup.prototype.getRepos = function(){
-  $.get('https://api.github.com/users/daneden?access_token=' + apiKey).then(function(response){
-    console.log(response);
+GithubLookup.prototype.getRepos = function(username, displayRepos){
+  $.get('https://api.github.com/users/' + username + '/repos?access_token=' + apiKey).then(function(response){
+    displayRepos(response);
   }).fail(function(error){
-    console.log(error.responseJSON.message);
+    displayRepos(error.responseJSON.message);
   });
 };
 
