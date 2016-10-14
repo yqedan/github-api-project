@@ -9,7 +9,11 @@ function displayRepos(repos){
   $("#data").append("<ul>"+ repoList + "</ul>");
 }
 function displayPageList(pageCount){
-
+for (var i = 1; i <= pageCount; i++) {
+    $("#page-buttons").append(
+      "<button class='btn view-page' id='view-page-" + i + "'>Page " + i + "</button>&nbsp;"
+    );
+}
 }
 $(document).ready(function() {
   $("#get-user-info").submit(function(event){
@@ -18,6 +22,6 @@ $(document).ready(function() {
     var username = $("#username").val();
     var githublookup = new GithubLookup();
     //githublookup.getRepos(username, displayRepos);
-    githublookup.getNumberOfPagesOfRepos(username);
+    githublookup.getNumberOfPagesOfRepos(displayPageList, username);
   });
 });
