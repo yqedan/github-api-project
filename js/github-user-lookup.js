@@ -4,21 +4,21 @@ GithubLookup = function(){
   this.numberOfpagesOfRepos = 0;
 }
 
-GithubLookup.prototype.getNumberOfPagesOfRepos = function(displayPageList, username){
+GithubLookup.prototype.getAllRepos = function(displayPageList, username){
   var that = this;
   $.get('https://api.github.com/users/' + username + '?&access_token=' + apiKey).then(function(response){
     displayPageList(username, Math.ceil(response.public_repos/30));
   }).fail(function(error){
-    displayRepos(error.responseJSON.message);
+    displayPageList(username, error.responseJSON.message);
   });
 }
 
-GithubLookup.prototype.getRepos = function(username, displayRepos, page){
+GithubLookup.prototype.getPageOfRepos = function(username, cacheRepos, page){
 
   $.get('https://api.github.com/users/' + username + '/repos?page=' + page + '&access_token=' + apiKey).then(function(response){
-    displayRepos(response);
+    cacheRepos(response, page);
   }).fail(function(error){
-    displayRepos(error.responseJSON.message);
+    cacheRepos(error.responseJSON.message, page);
   });
 };
 
