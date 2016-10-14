@@ -1,7 +1,6 @@
 var GithubLookup = require('./../js/github-user-lookup.js').githubLookupModule;
 
 function displayRepos(repos){
-  console.log(repos);
   $("#data").text("");
   var repoList = "";
   for (var i = 0; i < repos.length; i++) {
@@ -12,7 +11,6 @@ function displayRepos(repos){
 }
 
 function cacheRepos(repos, page){
-  console.log(repos);
   pages[page-1] = repos;
 }
 
@@ -26,10 +24,11 @@ function displayPageList(username, pageCount){
     githublookup.getPageOfRepos(username, cacheRepos, i);
   }
   $(".view-page").click(function() {
-    console.log(pages);
+    $("#data").show();
     var page = $(this).attr('id')[10];
     displayRepos(pages[page-1]);
   });
+  $("#page-buttons").show();
 }
 
 var githublookup = new GithubLookup();
@@ -38,6 +37,8 @@ var pages = [];
 $(document).ready(function() {
   $("#get-user-info").submit(function(event){
     event.preventDefault();
+    $("#page-buttons").text("");
+    $("#data").text("");
     var username = $("#username").val();
     githublookup.getAllRepos(displayPageList, username);
   });
