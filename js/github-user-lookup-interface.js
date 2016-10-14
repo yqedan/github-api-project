@@ -12,6 +12,7 @@ function displayRepos(repos, page, username){
     }else{
       repoList += "<td>" + repos[i].description + "</td>";
     }
+    repoList += "<td>" + moment(repos[i].created_at).format("LL") + "</td>"
     repoList += "</tr>";
   }
   $("#data").append("<table class='table'>"+
@@ -19,6 +20,7 @@ function displayRepos(repos, page, username){
                         "<th>#</th>" +
                         "<th>Ropository Name</th>" +
                         "<th>Description</th>" +
+                        "<th>Date created</th>" +
                       "</tr>" +
                       repoList +
                     "</table>");

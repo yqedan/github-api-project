@@ -9,9 +9,6 @@ var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var lib = require('bower-files')({
   "overrides":{
-    "clipboard" : {
-      "main": "dist/clipboard.js"
-    },
     "bootstrap" : {
       "main": [
         "less/bootstrap.less",
