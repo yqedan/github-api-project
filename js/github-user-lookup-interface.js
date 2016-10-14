@@ -15,37 +15,50 @@ function displayRepos(repos, page){
     repoList += "</tr>";
   }
   $("#data").append("<table class='table'>"+
-                    "<tr>" +
-                    "<th>#</th>" +
-                    "<th>Name</th>" +
-                    "<th>Description</th>" +
-                    "</tr>" +
-                    repoList +
+                      "<tr>" +
+                        "<th>#</th>" +
+                        "<th>Ropository Name</th>" +
+                        "<th>Description</th>" +
+                      "</tr>" +
+                      repoList +
                     "</table>");
 }
 
 function cacheRepos(repos, page){
-  pages[page-1] = repos;
+  githublookup.pages[page-1] = repos;
 }
 
-function displayPageList(username, pageCount){
+function displayPageList(user){
   $("#page-buttons").text("");
   $("#data").hide();
-  $("#page-buttons").append("<h3>Please select a page!</h3>");
+  $("#page-buttons").append("<h3>User: " + user.login + "</h3>");
+  $("#page-buttons").append("<img class='small' src=" + user.avatar_url + "><br>");
+  $("#page-buttons").append("<h4>Click to see their repositories</h4>");
+  var pageCount = Math.ceil(user.public_repos/30);
   for (var i = 1; i <= pageCount; i++) {
-    $("#page-buttons").append("<button class='btn view-page' id='view-page-" + i + "'>Page " + i + "</button>&nbsp;");
-    githublookup.getPageOfRepos(username, cacheRepos, i);
+    if(i === pageCount){
+      $("#page-buttons").append("<button class='btn view-page' id='view-page-" + i + "'>" + i +"-"+ user.public_repos + "</button>&nbsp;");
+    }else{
+      $("#page-buttons").append("<button class='btn view-page' id='view-page-" + i + "'>" + i +"-"+ (i*30) + "</button>&nbsp;");
+    }
+    githublookup.getPageOfRepos(notFound, user.login, cacheRepos, i);
   }
   $(".view-page").click(function() {
     $("#data").show();
     var page = $(this).attr('id')[10];
-    displayRepos(pages[page-1], page);
+    displayRepos(githublookup.pages[page-1], page);
   });
   $("#page-buttons").show();
 }
 
+function notFound(){
+  $("#page-buttons").text("");
+  $("#data").hide();
+  $("#page-buttons").append("<h3>User not found</h3>");
+  $("#page-buttons").show();
+}
+
 var githublookup = new GithubLookup();
-var pages = [];
 
 $(document).ready(function() {
   $("#get-user-info").submit(function(event){
@@ -53,6 +66,6 @@ $(document).ready(function() {
     $("#page-buttons").text("");
     $("#data").text("");
     var username = $("#username").val();
-    githublookup.getAllRepos(displayPageList, username);
+    githublookup.getAllRepos(displayPageList, notFound, username);
   });
 });

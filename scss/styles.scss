@@ -1,5 +1,5 @@
-$blue : #6666ff;
 $green : #00e64d;
+
 body{
   background-image: url(../../img/octocat_darkwood.jpg);
   background-attachment: fixed;
@@ -7,23 +7,31 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   .well{
-    background-color: rgba( $green, .7 )
+    background-color: rgba( $green, .7 );
+    h3, h4{
+      margin: 0px;
+      margin-bottom: 10px;
+    }
   }
-}
-
-td{
-  font-weight: bold;
-}
-#title-well{
-  margin-top: 20px;
-  text-align: center;
-  h1{
-    margin: 0px;
+  td{
+    font-weight: bold;
   }
-}
-#page-buttons{
-  display: none;
-}
-#data{
-  display: none;
+  #title-well{
+    margin-top: 20px;
+    text-align: center;
+    h1{
+      margin: 0px;
+    }
+  }
+  #page-buttons{
+    display: none;
+    .small{
+      height: 150px;
+      width: auto;
+      padding: 10px;
+    }
+  }
+  #data{
+    display: none;
+  }
 }
