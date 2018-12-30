@@ -5,7 +5,7 @@ GithubLookup = function(){
 }
 
 GithubLookup.prototype.getAllRepos = function(displayPageList, notFound, username){
-  $.get('https://api.github.com/users/' + username + '?&access_token=' + apiKey).then(function(response){
+  $.get('https://api.github.com/users/' + username + '?access_token=' + apiKey).then(function(response){
     displayPageList(response);
   }).fail(function(error){
     notFound(error.responseJSON.message);

@@ -46,9 +46,9 @@ function displayPageList(user){
   var pageCount = Math.ceil(user.public_repos/30);
   for (var i = 1; i <= pageCount; i++) {
     if(i === pageCount){
-      $("#page-buttons").append("<button class='btn view-page' id='view-page-" + i + "'>" + i +"-"+ user.public_repos + "</button>&nbsp;");
+      $("#page-buttons").append("<button class='btn view-page' id='view-page-" + i + "'>" + (((i-1) * 30 ) + 1) +"-"+ user.public_repos + "</button>&nbsp;");
     }else{
-      $("#page-buttons").append("<button class='btn view-page' id='view-page-" + i + "'>" + i +"-"+ (i*30) + "</button>&nbsp;");
+      $("#page-buttons").append("<button class='btn view-page' id='view-page-" + i + "'>" + (((i-1) * 30 ) + 1) +"-"+ (i*30) + "</button>&nbsp;");
     }
     githublookup.getPageOfRepos(notFound, user.login, cacheRepos, i);
   }
